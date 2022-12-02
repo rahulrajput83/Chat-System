@@ -3,7 +3,6 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import './App.scss'
 import Chat from './Components/Chat'
 import Profile from './Components/Profile'
-import profile from './Images/profile.jpg'
 
 export default class App extends Component {
   constructor(props) {
