@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(247, 247, 247);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body, p, span, div, button {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@mixin user {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: black;
+
+    &:last-child {
+      font-size: 0.8rem;
+      color: rgb(167, 166, 166);
+    }
+  }
+}
+
+@mixin cards {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, 0);
+  width: 90%;
+  overflow-y: auto;
+  background: white;
+  height: 30rem;
+  box-shadow: 0px 0px 50px 5px #eee;
+  border-radius: 0.7rem;
+  padding: 1rem 1.2rem;
+  box-sizing: border-box;
+}
+
+@mixin img {
+  width: 2.5rem;
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: 0.2rem solid #eee;
+  object-fit: cover;
+}
+
+.Chat {
+  @include cards();
+  padding: 0 !important;
+
+  .userDetail {
+    padding: 0.7rem 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.15rem solid rgb(236, 235, 235);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .icon {
+      color: black;
+      text-decoration: none;
+    }
+
+    img {
+      @include img();
+    }
+
+    .user {
+      @include user();
+    }
+  }
+
+  .chatDetail {
+    padding: 0.7rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-sizing: border-box;
+
+    .message {
+      margin-right: auto;
+      font-size: 0.95rem;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      padding: 0.5rem;
+      border-radius: 0.7rem;
+      box-shadow: 0px 0px 50px 5px rgba(0, 0, 0, 0.1);
+      margin: 0.4rem 0;
+      font-weight: 600;
+      max-width: 100%;
+      width: fit-content;
+      background: rgb(63, 63, 63);
+      word-break: break-all;
+    }
+  }
+  .send {
+    padding: 0 1.2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+
+    input {
+      border: 0.19rem solid #eee;
+      border-radius: 0.4rem;
+      border-right: none;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      width: 100%;
+      padding: 0.5rem;
+      outline: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    button {
+      border: none;
+      padding: 0.5rem 0.65rem;
+      background: rgb(63, 63, 63);
+      border-top-right-radius: 0.4rem;
+      border-bottom-right-radius: 0.4rem;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      .icon {
+        margin: auto;
+        font-size: 1rem;
+        color: white;
+
+      }
+    }
+  }
+}
+
+.Profile {
+  @include cards();
+
+  .userDetail {
+    padding-bottom: 0.7rem;
+    border-bottom: 0.15rem solid rgb(236, 235, 235);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    img {
+      @include img();
+    }
+
+    .user {
+      @include user();
+    }
+
+    button {
+      padding: 0.5rem 0.65rem;
+      color: white;
+      border-radius: 0.4rem;
+      background: rgb(63, 63, 63);
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    justify-content: center;
+
+    input {
+      border: 0.19rem solid #eee;
+      border-radius: 0.4rem;
+      border-right: none;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      width: 100%;
+      padding: 0.5rem;
+      outline: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    button {
+      border: none;
+      padding: 0.5rem 0.65rem;
+      background: rgb(63, 63, 63);
+      border-top-right-radius: 0.4rem;
+      border-bottom-right-radius: 0.4rem;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      .icon {
+        margin: auto;
+        font-size: 1.1rem;
+        color: white;
+
+      }
+    }
+
+  }
+
+  .friends {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .data {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+
+      img {
+        @include img();
+      }
+
+      .user {
+        @include user();
+      }
+
+      .status {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 768px) {
+  @mixin cards {
+    width: 30%;
+  }
+
+  .Profile {
+    @include cards();
+  }
+
+  .Chat {
+    @include cards();
+  }
+
+}
