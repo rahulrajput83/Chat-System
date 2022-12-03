@@ -8,11 +8,18 @@ class Chat extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      userFriend: this.props.data.find((e) => e.name === this.props.params.id),
       message: '',
       userName: 'Rahul Rajput',
+      data: []
+    }
+
+  };
+  componentDidMount() {
+    this.setState({
       data: [
         {
-          me: 'Hey Rahul Rajput!'
+          me: `Hey ${this.state.userFriend.name}!`
         },
         {
           friend: 'Hello Friend'
@@ -21,7 +28,7 @@ class Chat extends Component {
           friend: 'How are you?'
         },
         {
-          me: "I'm fine Rahul Rajput & what about you?"
+          me: `I'm fine ${this.state.userFriend.name} & what about you?`
         },
         {
           friend: "I'm fine too"
@@ -32,36 +39,42 @@ class Chat extends Component {
         {
           friend: 'I used React.Js.'
         }
-
       ]
     }
+    )
   }
+
   Change = (e) => {
-    this.setState({message: e.target.value})
+    this.setState({ message: e.target.value })
   }
   post = () => {
-    this.setState({data: [...this.state.data, {me: this.state.message}]})
-    this.setState({message: ''})
+    if (this.state.message !== '') {
+      this.setState({ data: [...this.state.data, { me: this.state.message }] })
+      this.setState({ message: '' })
+    }
   }
   render() {
-    const userFriend = this.props.data.find((e) => e.name === this.props.params.id);
-    console.log(userFriend)
+    /* const userFriend = this.props.data.find((e) => e.name === this.props.params.id); */
+
     return (
       <div className='Chat'>
         <div className='userDetail'>
           <Link to='/' className='icon'>
             <FaArrowLeft className='icon' />
           </Link>
-          <img src={userFriend.profile} alt='' />
+          <img src={this.state.userFriend.profile} alt='' />
           <div className='user'>
-            <span>{userFriend.name}</span>
-            <span>{userFriend.online  ? 'Active Now': 'Offline'}</span>
+            <span>{this.state.userFriend.name}</span>
+            <span>{this.state.userFriend.online ? 'Active Now' : 'Offline'}</span>
           </div>
         </div>
         <div className='chatDetail'>
           {this.state.data.map((ele, index) => {
             return (
-              <span className='message' key={`message-${index}`} style={ele.hasOwnProperty('friend') ? { color: 'black', background: 'white', borderBottomLeftRadius: 0, marginRight: 'auto' } : { color: 'white', marginLeft: 'auto', borderBottomRightRadius: 0 }}>{ele.hasOwnProperty('friend') ? ele.friend : ele.me}</span>
+              <div className='message' key={`message-${index}`} >
+                {ele.hasOwnProperty('friend') ? <img src={this.state.userFriend.profile} alt='' /> : null}
+                <span style={ele.hasOwnProperty('friend') ? { color: 'black', background: 'white', borderBottomLeftRadius: 0, marginRight: 'auto' } : { color: 'white', marginLeft: 'auto', borderBottomRightRadius: 0 }}>{ele.hasOwnProperty('friend') ? ele.friend : ele.me}</span>
+              </div>
             )
           })}
         </div>

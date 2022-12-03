@@ -8,7 +8,11 @@ body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-body, p, span, div, button {
+body,
+p,
+span,
+div,
+button {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -88,20 +92,33 @@ body, p, span, div, button {
     box-sizing: border-box;
 
     .message {
-      margin-right: auto;
-      font-size: 0.95rem;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      padding: 0.5rem;
-      border-radius: 0.7rem;
-      box-shadow: 0px 0px 50px 5px rgba(0, 0, 0, 0.1);
-      margin: 0.4rem 0;
-      font-weight: 600;
-      max-width: 100%;
-      width: fit-content;
-      background: rgb(63, 63, 63);
-      word-break: break-all;
+      display: flex;
+      gap: 0.4rem;
+      align-items: flex-end;
+
+      img {
+        @include img();
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+      }
+
+      span {
+        margin-right: auto;
+        font-size: 0.95rem;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        padding: 0.5rem;
+        border-radius: 0.7rem;
+        box-shadow: 0px 0px 50px 5px rgba(0, 0, 0, 0.1);
+        margin: 0.4rem 0;
+        font-weight: 600;
+        max-width: 100%;
+        width: fit-content;
+        background: rgb(63, 63, 63);
+        word-break: break-all;
+      }
     }
   }
+
   .send {
     padding: 0 1.2rem;
     padding-bottom: 1rem;
@@ -230,12 +247,31 @@ body, p, span, div, button {
     gap: 1rem;
 
     .data {
+      position: relative;
       display: flex;
       flex-direction: row;
       gap: 1rem;
       align-items: center;
       cursor: pointer;
       text-decoration: none;
+
+      &:hover::after {
+        position: absolute;
+        content: attr(data-content);
+        background: #e0e0e0;
+        padding: 0.3rem 0.7rem;
+        border-radius: 0.4rem;
+        border-bottom-left-radius: 0;
+        box-shadow: 0px 0px 0px #5a5a5a,
+         0px 5px 0px whitesmoke;
+         font-weight: 600;
+        font-size: 0.8rem;
+        color: black;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%)
+      }
 
       img {
         @include img();
@@ -248,7 +284,10 @@ body, p, span, div, button {
       .status {
         font-size: 1.5rem;
       }
+
+
     }
+
   }
 }
 

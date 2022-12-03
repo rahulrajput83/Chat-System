@@ -4,10 +4,12 @@ import './App.scss'
 import Chat from './Components/Chat'
 import Profile from './Components/Profile'
 
+/* Class Component */
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      /* All Users Data State  */
       data: [
         {
             name: 'Andrew Neil',
@@ -42,8 +44,10 @@ export default class App extends Component {
     ]
     }
   }
+
   render() {
     return (
+      /* Routes */
       <BrowserRouter>
         <Routes>
           <Route path='/:id/' element={<Chat data={this.state.data} />} />
